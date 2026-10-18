@@ -28,25 +28,25 @@ public:
 void run();
 }
 
-#define VTL_TESTS_BEGIN(suite_name)                          \
-const char* name() const noexcept override                   \
-{                                                            \
-    return #suite_name;                                      \
-}                                                            \
-                                                             \
-void run() override                                          \
-{                                                            \
-    std::cout << "\tRunning suite \"suite_name\"...\n";
+#define VTL_TESTS_BEGIN(suite_name)                              \
+const char* name() const noexcept override                       \
+{                                                                \
+    return #suite_name;                                          \
+}                                                                \
+                                                                 \
+void run() override                                              \
+{                                                                \
+    std::cout << "\tRunning suite \"##suite_name\"...\n";
 
-#define VTL_TEST(case)                     \
-{                                          \
-    set_up();                              \
-    case();                                \
-    tear_down();                           \
-    std::cout << "\t\t#case: OK\n";        \
+#define VTL_TEST(case)                          \
+{                                               \
+    set_up();                                   \
+    case();                                     \
+    tear_down();                                \
+    std::cout << "\t\t\"##case\": OK\n";
 }
 
 #define VTL_TESTS_END() }
 
-#define VTL_REGISTER_SUITE(suite_name)                                                       \
-inline static suite_register suite_name##__COUNTER__(std::make_shared<suite_name>());
+#define VTL_REGISTER_SUITE(suite_name)                                                            \
+inline static vtl::suite_register suite_name##__COUNTER__(std::make_shared<suite_name>());
