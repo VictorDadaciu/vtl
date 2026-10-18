@@ -43,7 +43,7 @@ void run() override                                              \
     set_up();                                   \
     case();                                     \
     tear_down();                                \
-    std::cout << "\t\t\"##case\": OK\n";
+    std::cout << "\t\t\"##case\": OK\n";        \
 }
 
 #define VTL_TESTS_END() }
