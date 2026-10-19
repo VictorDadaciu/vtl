@@ -76,14 +76,12 @@ size_t run() override                             \
 {                                                 \
     size_t n{};
 
-// TODO: add parameters to cases?
-
-#define VTL_TEST(case)                                \
+#define VTL_TEST(case, ...)                           \
 {                                                     \
     set_up();                                         \
     try                                               \
     {                                                 \
-        case();                                       \
+        case(__VA_ARGS__);                            \
         std::println("|   {}: OK", #case);            \
     }                                                 \
     catch(const std::exception& e)                    \
