@@ -98,7 +98,7 @@ size_t run() override                             \
 }
 
 #define VTL_REGISTER_SUITE(suite_name)                                                            \
-inline static vtl::suite_register suite_name##__COUNTER__(std::make_shared<suite_name>());
+static vtl::suite_register suite_name##__COUNTER__(std::make_shared<suite_name>())
 
 #define VTL_EQUALS(actual, expected) vtl::assert_equals(actual, expected)
 #define VTL_ASSERT(actual) vtl::assert(actual)
