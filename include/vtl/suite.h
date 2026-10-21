@@ -55,14 +55,6 @@ inline void assert_equals(const T& actual, const T& expected, std::source_locati
         ));
 }
 
-inline void assert(bool actual, std::source_location&& sl=std::source_location::current())
-{
-    if (!actual)
-        throw std::invalid_argument(std::format("{}: assertion false",
-            source_location_formatter(std::move(sl))
-        ));
-}
-
 void run();
 }
 
@@ -101,4 +93,4 @@ size_t run() override                             \
 static vtl::suite_register suite_name##__COUNTER__(std::make_shared<suite_name>())
 
 #define VTL_EQUALS(actual, expected) vtl::assert_equals(actual, expected)
-#define VTL_ASSERT(actual) vtl::assert(actual)
+#define VTL_ASSERT(actual) vtl::assert_equals(actual, true)
